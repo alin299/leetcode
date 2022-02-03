@@ -1,7 +1,7 @@
 package top.alin.solution;
 
 public class LongestNiceSubstring {
-    public String longestNiceSubstring(String s) {
+    public String longestNiceSubstring1(String s) {
         char[] chars = s.toCharArray();
         int n = chars.length;
         int maxPos = 0;
@@ -23,4 +23,21 @@ public class LongestNiceSubstring {
         }
         return s.substring(maxPos, maxPos + maxLen);
     }
+    public String longestNiceSubstring(String s) {
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            if((Character.isLowerCase(c) && !s.contains(String.valueOf(Character.toUpperCase(c))))
+                    || (Character.isUpperCase(c) && !s.contains(String.valueOf(Character.toLowerCase(c))))) {
+                String s1 = longestNiceSubstring(s.substring(0, i));
+                String s2 = longestNiceSubstring(s.substring(i + 1));
+                if (s1.length() >= s2.length()) {
+                    return s1;
+                } else {
+                    return s2;
+                }
+            }
+        }
+        return s;
+    }
+
 }
