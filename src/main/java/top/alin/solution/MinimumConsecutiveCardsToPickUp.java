@@ -1,10 +1,11 @@
 package top.alin.solution;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MinimumConsecutiveCardsToPickUp {
     public int minimumCardPickup(int[] cards) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         int ans = Integer.MAX_VALUE;
         for(int i = 0; i < cards.length; i++) {
             if (map.containsKey(cards[i])) {
