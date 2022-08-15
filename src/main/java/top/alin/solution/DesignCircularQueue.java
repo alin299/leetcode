@@ -3,10 +3,10 @@ package top.alin.solution;
 public class DesignCircularQueue {
     class MyCircularQueue {
         int[] q;
-        int head, tail, capcity;
+        int head, tail, capacity;
         public MyCircularQueue(int k) {
-            capcity = k + 1;
-            q = new int[capcity];
+            capacity = k + 1;
+            q = new int[capacity];
         }
 
         public boolean enQueue(int value) {
@@ -14,7 +14,7 @@ public class DesignCircularQueue {
                 return false;
             }
             q[tail] = value;
-            tail = (tail + 1) % capcity;
+            tail = (tail + 1) % capacity;
             return true;
         }
 
@@ -22,7 +22,7 @@ public class DesignCircularQueue {
             if (isEmpty()) {
                 return false;
             }
-            head = (head + 1) % capcity;
+            head = (head + 1) % capacity;
             return true;
         }
 
@@ -37,7 +37,7 @@ public class DesignCircularQueue {
             if (isEmpty()) {
                 return -1;
             }
-            return q[(tail + capcity - 1) % capcity];
+            return q[(tail + capacity - 1) % capacity];
         }
 
         public boolean isEmpty() {
@@ -45,7 +45,7 @@ public class DesignCircularQueue {
         }
 
         public boolean isFull() {
-            return (tail + 1) % capcity == head;
+            return (tail + 1) % capacity == head;
         }
     }
 }
